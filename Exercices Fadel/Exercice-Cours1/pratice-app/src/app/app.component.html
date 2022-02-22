@@ -1,0 +1,13 @@
+<h1>Etudients</h1>
+<div class="container">
+  <ul>
+    <li *ngFor="let student of students" (click)="select(student)">
+      <h1>{{student.fname}} {{student.lname}}</h1>
+    </li>
+  </ul>
+  <ng-container *ngIf="selected !== undefined">
+    <app-details [student]="selected"></app-details>
+  </ng-container>
+</div>
+
+

@@ -1,0 +1,13 @@
+<div>
+  <h1>{{student.fname}} {{student.lname}}</h1>
+  <p>{{student.cp}}</p>
+  <ng-container *ngFor="let score of student.scores">
+    <p>
+      {{score.name}}
+    </p>
+    <p [ngClass]="(score.value === 'A+') ? 'result-color-red' : 'result-color-blue'">
+      {{score.value}}
+    </p>
+  </ng-container>
+  <p></p>
+</div>
