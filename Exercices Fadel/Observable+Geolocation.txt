@@ -1,0 +1,81 @@
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {Observable, Observer} from "rxjs";
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent implements OnInit {
+  title = 'Bienvenue sur CoiffeX\n';
+  subtitle = 'La plateforme de coiffure dynamique';
+
+  private firstObsSubscription: any;
+  private locationSubscription: any;
+
+  constructor(public router: Router) {
+  }
+
+  ngOnInit(): void {
+    // this.firstObsSubscription = interval(1000).subscribe(count => {
+    //   console.log(count);
+    // })
+    const location$ = new Observable((observer: Observer<any>) => {
+      const onSucess: PositionCallback = (pos: any) => {
+        observer.next(pos);
+      }
+      const onError: PositionErrorCallback = (positionError => {
+        observer.error(positionError);
+      })
+      let watchId: number;
+      if ('geolocation' in navigator) {
+        watchId = navigator.geolocation.watchPosition(onSucess, onError);
+      } else {
+        onError({code: 100, message: 'Pas de geo', PERMISSION_DENIED: 1, POSITION_UNAVAILABLE: 1, TIMEOUT: 1})
+      }
+      const unsubscriber = () => {
+        navigator.geolocation.clearWatch(watchId)
+      }
+      return unsubscriber;
+    });
+
+    this.locationSubscription = location$.subscribe({
+      next(position) {
+        console.log('Current Position', position);
+      },
+      error(msg) {
+        console.log('Error getting location', msg);
+      }
+    })
+
+    setTimeout(() => {
+      this.locationSubscription.unsubscribe()
+      console.log('Unsubscribed!')
+    }, 30000)
+
+    const customIntervalObservable = new Observable((observer: Observer<any>) => {
+      let count = 0;
+      setInterval(() => {
+        observer.next(count);
+        if (count === 2) {
+          observer.complete();
+        }
+        if (count > 3) {
+          observer.error(new Error('Count is greater than 3'))
+        }
+        count++;
+      }, 1000);
+    });
+    this.firstObsSubscription = customIntervalObservable.subscribe((data) => {
+      console.log(data);
+    }, error => {
+      alert(error.message)
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.firstObsSubscription.unsubscribe();
+    this.locationSubscription.unsubscribe();
+  }
+}
