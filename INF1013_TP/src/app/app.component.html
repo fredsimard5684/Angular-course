@@ -1,0 +1,7 @@
+<div *ngIf="router.url.startsWith('/auth'); else elseBlock">
+  <router-outlet></router-outlet>
+</div>
+<ng-template #elseBlock>
+  <app-main-layout></app-main-layout>
+</ng-template>
+

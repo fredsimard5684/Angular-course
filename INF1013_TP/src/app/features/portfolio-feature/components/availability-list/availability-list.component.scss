@@ -1,0 +1,19 @@
+@import "src/app/shared/variables";
+
+div.mat-elevation-z8 {
+  width: 80vw;
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  width: 100px;
+  padding: $mat-table-default-padding;
+}
+
+td.mat-cell {
+  padding: $mat-table-default-padding;
+}

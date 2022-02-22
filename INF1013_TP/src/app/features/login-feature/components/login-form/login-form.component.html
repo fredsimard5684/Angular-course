@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-content>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <h2>Se connecter</h2>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Nom d'utilisateur" name="username">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Mot de passe" name="password">
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid">Connexion</button>
+    </form>
+    <a [routerLink]="['/auth/register']">S'inscrire?</a>
+  </mat-card-content>
+</mat-card>

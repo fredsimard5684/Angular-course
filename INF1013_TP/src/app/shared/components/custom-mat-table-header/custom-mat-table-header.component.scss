@@ -1,0 +1,15 @@
+@import "src/app/shared/variables";
+
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-weight: bold;
+  padding-top: 16px;
+  padding-left: $mat-table-default-padding;
+  padding-right: $mat-table-default-padding;
+}
+
+button {
+  margin-top: 4px;
+}

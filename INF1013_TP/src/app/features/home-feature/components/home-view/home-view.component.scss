@@ -1,0 +1,27 @@
+img {
+  border-radius: 50%;
+  padding: 5px;
+  height: 175px;
+  width: 175px;
+  margin: auto;
+}
+
+mat-card {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+}
+
+mat-card-content {
+  margin: auto;
+  padding-top: 10px;
+}
+mat-card-actions {
+  margin: auto;
+}
+
+.col-xl-12{
+  width: 100%;
+}

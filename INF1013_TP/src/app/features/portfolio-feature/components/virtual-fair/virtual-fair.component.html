@@ -1,0 +1,54 @@
+<div class="top-container">
+  <div class="small-titles-container">
+    <mat-form-field class="virtual-fair-title" appearance="outline">
+      <mat-label>Titre</mat-label>
+      <input [(ngModel)]="title" matInput>
+    </mat-form-field>
+    <mat-form-field class="virtual-fair-title" appearance="outline">
+      <mat-label>Description accrochante</mat-label>
+      <input [(ngModel)]="smallDescription" matInput>
+    </mat-form-field>
+  </div>
+  <div>
+    <button (click)="changeEditMode()" mat-button color="primary">
+      <mat-icon>{{buttonIcon}}</mat-icon>
+      {{buttonText}}</button>
+    <button *ngIf="isEditing" (click)="changeEditMode()" mat-button class="cancel-button">
+      <mat-icon>close</mat-icon>
+      Annuler
+    </button>
+  </div>
+
+</div>
+
+<mat-form-field appearance="outline" class="mat-elevation-z0 description">
+  <mat-label>Description</mat-label>
+  <textarea matInput class="mat-elevation-z0" rows="4" [(ngModel)]="description"></textarea>
+</mat-form-field>
+
+<h1>Votre salon virtuel</h1>
+
+<div class="row">
+  <div class="col-xl-12">
+    <img id=img1 class="mat-elevation-z8"
+         src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/401c358a-32f6-4806-89d2-ee153e46f8b0/d551knb-ed8e4991-c6ad-4b02-882b-3477a28f74d4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQwMWMzNThhLTMyZjYtNDgwNi04OWQyLWVlMTUzZTQ2ZjhiMFwvZDU1MWtuYi1lZDhlNDk5MS1jNmFkLTRiMDItODgyYi0zNDc3YTI4Zjc0ZDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WWzD-sR_E1CtAxU3G63Yjl2SfDk2PVpolEERu0vhXjM">
+    <img id=img2 class="mat-elevation-z8"
+         src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f0011948-7c26-4538-8bb4-dc0434eb8a76/d5biha5-352c46b7-ecc9-49a1-8160-cf0478b6fb1e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2YwMDExOTQ4LTdjMjYtNDUzOC04YmI0LWRjMDQzNGViOGE3NlwvZDViaWhhNS0zNTJjNDZiNy1lY2M5LTQ5YTEtODE2MC1jZjA0NzhiNmZiMWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.CMRiHevPSvg-257kCt26FyZl3DIcWKpf4vVnN6oFexc">
+    <img id=img3 class="mat-elevation-z8"
+         src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5fd368a5-74fd-41df-9442-c347ca1ec8a0/d60bf7o-233c3508-f470-4faa-8ed4-3a57b43fd184.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVmZDM2OGE1LTc0ZmQtNDFkZi05NDQyLWMzNDdjYTFlYzhhMFwvZDYwYmY3by0yMzNjMzUwOC1mNDcwLTRmYWEtOGVkNC0zYTU3YjQzZmQxODQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.fkrFH7ra8YUNLQTMPF7ITX76qPiOPXXOHJa8Z4cfy2E">
+    <img id=img4 class="mat-elevation-z8"
+         src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0ccfdd0f-160f-4e41-835e-7798968047fb/d6edoy3-8ea37cc6-e421-447a-a5ab-b2c30ac1442f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBjY2ZkZDBmLTE2MGYtNGU0MS04MzVlLTc3OTg5NjgwNDdmYlwvZDZlZG95My04ZWEzN2NjNi1lNDIxLTQ0N2EtYTVhYi1iMmMzMGFjMTQ0MmYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.cDJzH87GldBxiQeQhR8r9Wc70S5yqH6p6vrq31cEtaQ">
+    <img id=imag1 class="mat-elevation-z8"
+         src="https://i.pinimg.com/564x/77/88/e6/7788e6ef612a322bdbde9a2910f04746.jpg">
+    <img id=imag2 class="mat-elevation-z8"
+         src="https://i.guim.co.uk/img/media/6bc0d3f8d9b3f000eb5e0947c3ceef0496995ecc/338_103_3281_1969/master/3281.jpg?width=1020&quality=85&auto=format&fit=max&s=cb93e551b054c0923a8ec8c0190dec61">
+    <img id="imag3" class="mat-elevation-z8"
+         src="http://media.lehighvalleylive.com/music_impact/photo/bon-jovi-791298463885436d_large.jpg" alt="oopsie">
+    <div id="add-picture-container">
+      <label class="mat-elevation-z8" id="add-picture-avatar" for="upload-photo">Ajouter une photo</label>
+      <input type="file" id="upload-photo">
+    </div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
