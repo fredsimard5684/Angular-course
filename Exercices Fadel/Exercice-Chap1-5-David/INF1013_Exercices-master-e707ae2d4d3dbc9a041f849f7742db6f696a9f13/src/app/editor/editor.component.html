@@ -1,0 +1,44 @@
+<form class="flex-v"
+      [formGroup]="studentForm">
+  <div *ngIf="studentForm.get(['firstname']).invalid"  class="alert">
+    <div *ngIf="studentForm.get(['firstname']).errors.required">
+      Le prénom est obligatoire
+    </div>
+  </div>
+  <div><label>Prénom: </label><input  formControlName = "firstname"/></div>
+  <div><label>Nom: </label><input formControlName = "lastname"/></div>
+  <div><label>Sexe: </label><select formControlName = "sex">
+    <option value="male">Homme</option>
+    <option value="female">Femme</option>
+  </select>
+  </div>
+  <label> Évaluations:
+    <input value="Ajouter" type = button  (click)="addScore()"/>
+  </label>
+  <div formGroupName="scores" class="color-rect-border">
+    <div *ngFor="let f of scoresFormArray.controls; let i = index">
+      <div [formGroupName]="i">
+        <div>
+          <input value="-" type = button  (click)="removeScore(i)"/>
+
+        </div>
+        <div><label>Nom évaluation: </label><input  formControlName = "name"/></div>
+        <div><label>Note Obtenue: </label><input type ="number" formControlName = "value"/></div>
+        <div><label>Date: </label><input type = "date" formControlName = "date"/></div>
+      </div>
+    </div>
+  </div>
+  <div><label>Code Permanent: </label><input formControlName = "cp"/></div>
+
+
+  <div>
+    <input formControlName = "add" type = submit value="Ajouter Étudiant"
+           [disabled]="!studentForm.valid"/>
+  </div>
+
+</form>
+
+<p>
+  {{studentForm.value | json}}
+</p>
+

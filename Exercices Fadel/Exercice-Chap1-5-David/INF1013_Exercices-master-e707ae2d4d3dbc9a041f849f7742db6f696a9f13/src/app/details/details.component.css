@@ -1,0 +1,48 @@
+label{
+  font-weight: bold;
+}
+table{
+  width: 75%;
+  margin: auto;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+table{
+  margin: 10px;
+}
+table tr,table td, table th{
+  border: 1px solid black
+}
+tr td:last-of-type, tr th:last-of-type{
+  text-align: center;
+}
+tr td,tr th{
+  padding: 5px;
+}
+section{
+
+  margin-left: auto;
+  margin-right: auto;
+  border:  solid 1px cyan;
+  background-color: lightcyan;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 10px;
+}
+.red{
+  color: red;
+}
+.blue{
+  color: blue;
+}
+.center{
+  margin-right: auto;
+  margin-left: auto;
+  width: 25%;
+  padding: 5px;
+}
+.nav-button{
+  padding: 5px;
+  width: 25px;
+}
+

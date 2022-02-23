@@ -1,0 +1,29 @@
+<mat-card>
+
+  <mat-nav-list>
+    <ng-container *ngFor="let s of students; let i = index">
+      <mat-list-item  [ngClass]="selIdx == i ?'selected':''">
+        <mat-chip-list>
+          <mat-chip>
+            <img matListAvatar  src="{{'assets/icons/'+s.gender+'.png'}}"/>
+          </mat-chip>
+        </mat-chip-list>
+        <span>{{s.fName + ' ' + s.lName.toUpperCase()}}</span>
+        <mat-chip-list>
+          <mat-chip>{{getAverage(s) | cote}}</mat-chip>
+        </mat-chip-list>
+        <nav>
+          <a [routerLink]="['/details',i]" routerLinkActive="active">Détails</a>
+          <strong class="red"> | </strong>
+          <a [routerLink]="['/edit', i]" routerLinkActive="active">Édit</a>
+          <strong class="red"> | </strong>
+          <a (click)="remove(i)">Supp</a>
+        </nav>
+
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-nav-list>
+</mat-card>
+
+

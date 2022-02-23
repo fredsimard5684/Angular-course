@@ -1,0 +1,21 @@
+form{
+  margin-left: 20px;
+  border:  solid 1px cyan;
+  background-color: lightcyan;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 10px;
+}
+div{
+  padding: 5px;
+  margin: 5px;
+}
+
+label {
+  display: inline-block;
+  width: 200px;
+}
+input{
+  display: inline-block;
+
+}

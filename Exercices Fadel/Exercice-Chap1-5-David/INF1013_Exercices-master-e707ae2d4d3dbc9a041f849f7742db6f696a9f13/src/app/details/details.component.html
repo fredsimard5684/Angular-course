@@ -1,0 +1,25 @@
+<section class="flex-v width-50pc">
+  <div><label>Prénom: </label><span>{{student.fName}}</span></div>
+  <div><label>Nom: </label><span>{{student.lName}}</span></div>
+  <div><label>Sexe: </label><span>{{student.gender === 'male' ? 'Masculin':'Féminin'}}</span></div>
+  <div><label>Code Permanent: </label><span>{{student.cp}}</span></div>
+  <div><label>Moyenne Globale: </label>
+    <strong>{{getAverage()}}</strong>,
+    <span class="red">{{getAverage() | cote}}</span>
+  </div>
+
+  <table *ngIf="student">
+    <tr><th>#</th><th>Dates</th><th>Évaluations</th><th>Notes</th></tr>
+    <tr *ngFor="let s of student.scores; let i = index">
+      <th>{{i}}</th>
+      <td>{{s.date | date:"dd/MM/yyyy"}}</td>
+      <td>{{s.name}}</td>
+      <td [ngClass]="s.value < 50?'red':'blue'">{{s.value}}/100</td>
+    </tr>
+  </table>
+  <nav class="center flex-h">
+    <button class="nav-button flex1" (click)="next(-1)"><</button>
+    <button class="nav-button flex1"(click)="next(1)">></button>
+  </nav>
+</section>
+
