@@ -1,0 +1,24 @@
+<form [formGroup]="profileForm">
+  <label>Prénom: <input type="text" formControlName="firstname"></label>
+  <label>Nom: <input type="text" formControlName="lastname"></label>
+  <div formGroupName="address">
+    <h3>Adresse</h3>
+    <label>Rue: <input type="text" formControlName="street"></label>
+    <label>Ville: <input type="text" formControlName="city"></label>
+    <label>Province: <input type="text" formControlName="state"></label>
+    <label>CP: <input type="text" formControlName="zip"></label>
+  </div>
+  <div formArrayName="contacts">
+    <h3>Contact</h3>
+    <button (click)="addContact()">Add Contact</button>
+    <div *ngFor="let contact of contacts!.controls; let i=index">
+      <label>
+        Contact:{{i}} <input type="text" [formControlName]="i">
+      </label>
+    </div>
+  </div>
+</form>
+
+<p>
+  {{profileForm.value | json}}
+</p>
